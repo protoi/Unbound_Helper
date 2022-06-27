@@ -1,0 +1,19 @@
+{
+  "name": "ub-moment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.1",
+    "node": "^18.4.0",
+    "node-fetch": "^2.6.1"
+  }
+}
