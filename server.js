@@ -13,7 +13,7 @@ server.all("/", (req, res) => {
 //function to start the server
 function keepActive()
 {
-  server.listen(3000, () => {
+  server.listen(process.env.PORT || 3000, () => {
     console.log("server is ready.")
   })
 }
