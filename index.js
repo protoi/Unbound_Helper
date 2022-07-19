@@ -3,7 +3,6 @@ const fetch = require("node-fetch");
 const keepActive = require("./server");
 require("dotenv").config();
 
-
 const client = new Discord.Client();
 var name;
 const downloadLink =
@@ -11,98 +10,92 @@ const downloadLink =
 
 const prefix = ";";
 
-
-
-function fetchData(endpoint)
-{
-	let fetchedData = []
-	try
-	{
-		fetch(endpoint)
-	 	.then((blob) => blob.json())
-	 	.then((data) => {
-	    fetchedData.push(...data);
-  });
-	}
-	catch(err)
-	{
+function fetchData(endpoint) {
+  let fetchedData = [];
+  try {
+    fetch(endpoint)
+      .then((blob) => blob.json())
+      .then((data) => {
+        fetchedData.push(...data);
+      });
+  } catch (err) {
     console.log("cummie cock");
-	}
+  }
   // console.log(fetchData)
-	return fetchedData
+  return fetchedData;
 }
 
+const endpointLvlUp =
+  "https://gist.githubusercontent.com/protoi/46be0275ecea2faf764605219b0af1b9/raw/5e50d5604d873ac77e6e552efdaa224bb2519036/pokemondatasetv2.json";
+let names = [];
+names = fetchData(endpointLvlUp);
 
-const endpointLvlUp =   "https://gist.githubusercontent.com/protoi/46be0275ecea2faf764605219b0af1b9/raw/5e50d5604d873ac77e6e552efdaa224bb2519036/pokemondatasetv2.json";
-let names = []
-names =fetchData(endpointLvlUp);
+const endpointEgg =
+  "https://gist.githubusercontent.com/protoi/5743f974b841e11c621f819ee724cdc3/raw/3f98f93fccc06ef9a9872bf5f0765839f4270821/eggmoves.json";
+let eggnames = [];
+eggnames = fetchData(endpointEgg);
 
-const endpointEgg =  "https://gist.githubusercontent.com/protoi/5743f974b841e11c621f819ee724cdc3/raw/3f98f93fccc06ef9a9872bf5f0765839f4270821/eggmoves.json";
-let eggnames = []
-eggnames =fetchData(endpointEgg);
+const endpointTM =
+  "https://gist.githubusercontent.com/protoi/b382e90243f76b4ae0ee8c114f23cd21/raw/42d7b354144bbcfc4cdc678191ccc6cf7784307d/TMLocationv2.json";
+let tmnames = [];
+tmnames = fetchData(endpointTM);
 
+const endpointpokelocation =
+  "https://gist.githubusercontent.com/protoi/c8fd17223e96753efceb96ec7e50605b/raw/2864bbaa1d102f776e9f5067e70eec7fa6e002e1/pokelocationsv2.json";
+let pokelocation = [];
+pokelocation = fetchData(endpointpokelocation);
 
-const endpointTM =  "https://gist.githubusercontent.com/protoi/b382e90243f76b4ae0ee8c114f23cd21/raw/42d7b354144bbcfc4cdc678191ccc6cf7784307d/TMLocationv2.json";
-let tmnames = []
-tmnames =fetchData(endpointTM);
+const endpointmega =
+  "https://gist.githubusercontent.com/protoi/14b6736a9f4ca6d82aa5c470d3de3d29/raw/5bfb59ab6442846afabcc431f06585de48baefcf/megastonesv2.json";
+let megalocation = [];
+megalocation = fetchData(endpointmega);
 
+const endpointz =
+  "https://gist.githubusercontent.com/protoi/b0fe471d62f68ae9a7528294556f9bdb/raw/89fd4b91c59f7b051910d9a41fc15d88ba3a4d6f/zmoves.json";
+let zlocation = [];
+zlocation = fetchData(endpointz);
 
-const endpointpokelocation =  "https://gist.githubusercontent.com/protoi/c8fd17223e96753efceb96ec7e50605b/raw/2864bbaa1d102f776e9f5067e70eec7fa6e002e1/pokelocationsv2.json";
-let pokelocation = []
-pokelocation =fetchData(endpointpokelocation);
+const endpointScale =
+  "https://gist.githubusercontent.com/protoi/36e538d025ddc92112d2b9a8711703ad/raw/9b9d71baaddc7cb1cb821ef74ee93935241dec3a/scalemon.json";
+let scalenames = [];
+scalenames = fetchData(endpointScale);
 
-
-const endpointmega =  "https://gist.githubusercontent.com/protoi/14b6736a9f4ca6d82aa5c470d3de3d29/raw/5bfb59ab6442846afabcc431f06585de48baefcf/megastonesv2.json";
-let megalocation =[]
-megalocation =fetchData(endpointmega); 
-
-
-const endpointz =  "https://gist.githubusercontent.com/protoi/b0fe471d62f68ae9a7528294556f9bdb/raw/89fd4b91c59f7b051910d9a41fc15d88ba3a4d6f/zmoves.json";
-let zlocation =[]
-zlocation =fetchData(endpointz); 
-
-
-const endpointScale =  "https://gist.githubusercontent.com/protoi/36e538d025ddc92112d2b9a8711703ad/raw/9b9d71baaddc7cb1cb821ef74ee93935241dec3a/scalemon.json";
-let scalenames = []
-scalenames =fetchData(endpointScale);
-
-
-const endpointHeldItems =  "https://gist.githubusercontent.com/protoi/3ffd76cf17285c3ed85f29052cc29adc/raw/b8e2f48f7deef8f11a8c247d7ee692c4430ceb2e/HeldItems.json";
-let heldItemsName =[]
+const endpointHeldItems =
+  "https://gist.githubusercontent.com/protoi/3ffd76cf17285c3ed85f29052cc29adc/raw/b8e2f48f7deef8f11a8c247d7ee692c4430ceb2e/HeldItems.json";
+let heldItemsName = [];
 heldItemsName = fetchData(endpointHeldItems);
 
-
-const endpointAbilities =  "https://gist.githubusercontent.com/protoi/ac007213bb6c0ff9ac2bbcbeb28469a9/raw/5157fedac63bcb802b267be20669344aa71ba1b9/abilitiesv2.json";
-let abilities =[]
+const endpointAbilities =
+  "https://gist.githubusercontent.com/protoi/ac007213bb6c0ff9ac2bbcbeb28469a9/raw/5157fedac63bcb802b267be20669344aa71ba1b9/abilitiesv2.json";
+let abilities = [];
 abilities = fetchData(endpointAbilities);
 
+const endpointAbilityDescription =
+  "https://gist.githubusercontent.com/protoi/60e7f90624d45e6ff3ad0948c955daeb/raw/103fb2694b6e8299c6e5d4d9f92fcf291cb21dc6/abilityDescription.json";
+let abilityDescription = [];
+abilityDescription = fetchData(endpointAbilityDescription);
 
-const endpointAbilityDescription =  "https://gist.githubusercontent.com/protoi/60e7f90624d45e6ff3ad0948c955daeb/raw/103fb2694b6e8299c6e5d4d9f92fcf291cb21dc6/abilityDescription.json";
-let abilityDescription = []
-abilityDescription =fetchData(endpointAbilityDescription);
+///////////////////////////////////////////////////////////////////////////////not verified
+const endpointTutorAndTmCompatibility =
+  "https://gist.githubusercontent.com/protoi/fb1d01321e38523e675841cf8a0c38fe/raw/838d99f69191492e2481cde5066e46d4517d5bbb/TutorAndTmCompatibility.json";
+let tutorAndTmCompatibility = [];
+tutorAndTmCompatibility = fetchData(endpointTutorAndTmCompatibility);
+/////////////////////////////////////////////////////////////////////////////// not verified
 
-
-//functions start here 😩 
+//functions start here 😩
 try {
-
-
   function normalizeString(str) {
     var answer = "";
 
     answer = str.replace(/[.:\-\s_*]/g, "");
-    
+
     return answer.toLowerCase();
   }
-
-
 
   function findAbilityDescription(abilityName, abilityList) {
     var answer = "...";
     abilityList.forEach((element) => {
-      if (
-        normalizeString(abilityName) ==
-        normalizeString(element.name)
-      ) {
+      if (normalizeString(abilityName) == normalizeString(element.name)) {
         answer = element.effect;
       }
     });
@@ -153,7 +146,8 @@ try {
     var answer;
     tmlist.forEach((element) => {
       if (
-        normalizeString(tmtomatch) === normalizeString(element.tmnumber.toString()) ||
+        normalizeString(tmtomatch) ===
+          normalizeString(element.tmnumber.toString()) ||
         normalizeString(tmtomatch) === normalizeString(element.tmname)
       ) {
         answer = element;
@@ -204,6 +198,33 @@ try {
       msg.channel.send(exampleEmbed);
     }
 
+    //UNTESTED CODE/////////////////////////////////////////////
+
+    function displayTutorMatches(nameOfMon, moveList) {
+      displayTutorMoves = "";
+      moveList.tutorMoves.forEach((element) => {
+        displayTutorMoves = displayTutorMoves + element.toLowerCase() + ", ";
+      });
+      const exampleEmbed = new Discord.MessageEmbed()
+        .setTitle(nameOfMon.toLowerCase())
+        .setDescription(displayTutorMoves);
+      msg.channel.send(exampleEmbed);
+    }
+
+    function displayTMLearnsetMatches(nameOfMon, moveList) {
+      displayTMLearnsetMoves = "";
+      moveList.tmMoves.forEach((element) => {
+        displayTMLearnsetMoves =
+          displayTMLearnsetMoves + element.toLowerCase() + ", ";
+      });
+      const exampleEmbed = new Discord.MessageEmbed()
+        .setTitle(nameOfMon.toLowerCase())
+        .setDescription(displayTMLearnsetMoves);
+      msg.channel.send(exampleEmbed);
+    }
+
+    //UNTESTED CODE/////////////////////////////////////////////
+
     function displayTMmatches(tmdata) {
       const exampleEmbed = new Discord.MessageEmbed()
         .setTitle("TM #" + tmdata.tmnumber)
@@ -223,19 +244,19 @@ try {
         .setTitle(pokedata.name)
         .setDescription(
           "HP: " +
-          pokedata.hp +
-          "\nAttack: " +
-          pokedata.attack +
-          "\nDefense: " +
-          pokedata.defense +
-          "\nSp. Attack: " +
-          pokedata.spattack +
-          "\nSp. Def: " +
-          pokedata.spdef +
-          "\nSpeed: " +
-          pokedata.speed +
-          "\n\nTotal: " +
-          pokedata.total
+            pokedata.hp +
+            "\nAttack: " +
+            pokedata.attack +
+            "\nDefense: " +
+            pokedata.defense +
+            "\nSp. Attack: " +
+            pokedata.spattack +
+            "\nSp. Def: " +
+            pokedata.spdef +
+            "\nSpeed: " +
+            pokedata.speed +
+            "\n\nTotal: " +
+            pokedata.total
         );
       msg.channel.send(exampleEmbed);
     }
@@ -248,7 +269,6 @@ try {
     }
 
     function displayAbility(abilityData) {
-
       let description1 = findAbilityDescription(
         abilityData.Ability[0],
         abilityDescription
@@ -266,17 +286,17 @@ try {
         .setTitle(abilityData.name)
         .setDescription(
           "Ability 1: **" +
-          abilityData.Ability[0] +
-          "**\n" +
-          description1 +
-          "\n\nAbility 2: **" +
-          abilityData.Ability[1] +
-          "**\n" +
-          description2 +
-          "\n\nHidden Ability: **" +
-          abilityData.Ability[2] +
-          "**\n" +
-          descriptionHA
+            abilityData.Ability[0] +
+            "**\n" +
+            description1 +
+            "\n\nAbility 2: **" +
+            abilityData.Ability[1] +
+            "**\n" +
+            description2 +
+            "\n\nHidden Ability: **" +
+            abilityData.Ability[2] +
+            "**\n" +
+            descriptionHA
         );
       msg.channel.send(exampleEmbed);
     }
@@ -289,9 +309,8 @@ try {
     if (msg.content.startsWith(";moves ")) {
       name = msg.content.split(";moves ")[1];
 
-    
-        var answer = findMatches(name, names);
-      
+      var answer = findMatches(name, names);
+
       if (answer == null) {
         msg.channel.send("invalid input");
       } else {
@@ -311,6 +330,31 @@ try {
         displayEggMatches(answer.name, answer);
       }
     }
+    //UNTESTED CODE/////////////////////////////////////////////////////////////////////
+
+    if (msg.content.startsWith(";tutor ")) {
+      name = msg.content.split(";tutor ")[1];
+
+      const answer = findMatches(name, tutorAndTmCompatibility); //change eggnames to tutorAndTmCompatibilityList
+      if (answer == null) {
+        msg.channel.send("invalid input");
+      } else {
+        displayTutorMatches(answer.name, answer); //NOT DECLARED YET
+      }
+    }
+
+    if (msg.content.startsWith(";learntm ")) {
+      name = msg.content.split(";learntm ")[1];
+
+      const answer = findMatches(name, tutorAndTmCompatibility); //change eggnames to tutorAndTmCompatibilityList
+      if (answer == null) {
+        msg.channel.send("invalid input");
+      } else {
+        displayTMLearnsetMatches(answer.name, answer); //NOT DECLARED YET
+      }
+    }
+
+    //UNTESTED CODE////////////////////////////////////////////////////////////////////
 
     if (msg.content.startsWith(";tm ")) {
       name = msg.content.split(";tm ")[1];
@@ -413,8 +457,7 @@ try {
           { name: "The Z-Crystals", value: " Incinium Z" },
           {
             name: "Certain Missions cannot currently be completed:",
-            value:
-              "The National Pokedex (not officially)",
+            value: "The National Pokedex (not officially)",
           },
           {
             name: "Certain locations cannot be accessed:",
@@ -429,12 +472,9 @@ try {
         .setTitle(
           "Natures can be changed in Tehl Town. Complete the Mission requiring the four different forms of Sawsbuck."
         )
-        .setDescription(
-          "Bottle Cap Lady: Seaport Port"
-        );
+        .setDescription("Bottle Cap Lady: Seaport Port");
       msg.channel.send(exampleEmbed);
     }
-
 
     if (msg.content === ";difficulty") {
       const exampleEmbed = new Discord.MessageEmbed()
@@ -482,12 +522,11 @@ try {
       msg.channel.send(exampleEmbed);
     }
 
-    
-    
-
     if (msg.content === ";KBT" || msg.content === ";kbt") {
       const exampleEmbed = new Discord.MessageEmbed()
-        .setTitle("K.B.T tutor list(thank you `fox appreciation`, `SevenK`, LuckyHour and Falkyri3):")
+        .setTitle(
+          "K.B.T tutor list(thank you `fox appreciation`, `SevenK`, LuckyHour and Falkyri3):"
+        )
         .setImage(
           "https://cdn.discordapp.com/attachments/792456927073796117/964141023267786794/tutor_infographic.png"
         );
@@ -501,24 +540,24 @@ try {
         )
         .setDescription(
           "[Level Up Moves:](" +
-          endpointLvlUp +
-          ")\n\n[Egg Moves:](" +
-          endpointEgg +
-          ")\n\n[TM Locations:](" +
-          endpointTM +
-          ")\n\n[Pokemon Location: ](" +
-          endpointpokelocation +
-          ")\n\n[Mega Stones:](" +
-          endpointmega +
-          ")\n\n[Z-Moves:](" +
-          endpointz +
-          ")\n\n[Scalemons:](" +
-          endpointScale +
-          ")\n\n[Held Items:](" +
-          endpointHeldItems +
-          ")\n\n[Abilities:](" +
-          endpointAbilities +
-          ")"
+            endpointLvlUp +
+            ")\n\n[Egg Moves:](" +
+            endpointEgg +
+            ")\n\n[TM Locations:](" +
+            endpointTM +
+            ")\n\n[Pokemon Location: ](" +
+            endpointpokelocation +
+            ")\n\n[Mega Stones:](" +
+            endpointmega +
+            ")\n\n[Z-Moves:](" +
+            endpointz +
+            ")\n\n[Scalemons:](" +
+            endpointScale +
+            ")\n\n[Held Items:](" +
+            endpointHeldItems +
+            ")\n\n[Abilities:](" +
+            endpointAbilities +
+            ")"
         );
       msg.channel.send(exampleEmbed);
     }
@@ -530,40 +569,38 @@ try {
         )
         .setDescription(
           "Gym Challenge:\n[Gym 1- Mirskle:](" +
-          "https://pokepast.es/6998c53098e96079" +
-          ")\n\n[Gym 2- Vega:](" +
-          "https://pokepast.es/c4d8287578230c48" +
-          ")\n\n[Gym 3- Alice:](" +
-          "https://pokepast.es/694af4f398a45ca6" +
-          ")\n\n[Gym 4- Mel:](" +
-          "https://pokepast.es/fac9e83ba0405b87" +
-          ")\n\n[Maxima:](" +
-          "https://pokepast.es/cf2477bb14920bb2" +
-          ")\n\n[Gym 5- Galavan:](" +
-          "https://pokepast.es/7d28d007b50cf1a0" +
-          ")\n\n[Gym 6- Big Mo:](" +
-          "https://pokepast.es/4a372069df9cfc4a" +
-          ")\n\n[Gym 7- Tessy:](" +
-          "https://pokepast.es/aa602ef802708570" +
-          ")\n\n[Gym 8- Benjamin:](" +
-          "https://pokepast.es/10e68dc6df64d0dd" +
-          ")\n\nElite Four and Champion:" +
-          "\n[Moleman:](" +
-          "https://pokepast.es/12eaab54732c5af0" +
-          ")\n\n[Elias:](" +
-          "https://pokepast.es/a2f0783835899494" +
-          ")\n\n[Anabelle:](" +
-          "https://pokepast.es/48acac196bdecc2d" +
-          ")\n\n[Penny:](" +
-          "https://pokepast.es/9c1dec4b8fa4aff3" +
-          ")\n\n[The Champion:](" +
-          "https://pokepast.es/ffa3d2e7a5079902" +
-          ")"
+            "https://pokepast.es/6998c53098e96079" +
+            ")\n\n[Gym 2- Vega:](" +
+            "https://pokepast.es/c4d8287578230c48" +
+            ")\n\n[Gym 3- Alice:](" +
+            "https://pokepast.es/694af4f398a45ca6" +
+            ")\n\n[Gym 4- Mel:](" +
+            "https://pokepast.es/fac9e83ba0405b87" +
+            ")\n\n[Maxima:](" +
+            "https://pokepast.es/cf2477bb14920bb2" +
+            ")\n\n[Gym 5- Galavan:](" +
+            "https://pokepast.es/7d28d007b50cf1a0" +
+            ")\n\n[Gym 6- Big Mo:](" +
+            "https://pokepast.es/4a372069df9cfc4a" +
+            ")\n\n[Gym 7- Tessy:](" +
+            "https://pokepast.es/aa602ef802708570" +
+            ")\n\n[Gym 8- Benjamin:](" +
+            "https://pokepast.es/10e68dc6df64d0dd" +
+            ")\n\nElite Four and Champion:" +
+            "\n[Moleman:](" +
+            "https://pokepast.es/12eaab54732c5af0" +
+            ")\n\n[Elias:](" +
+            "https://pokepast.es/a2f0783835899494" +
+            ")\n\n[Anabelle:](" +
+            "https://pokepast.es/48acac196bdecc2d" +
+            ")\n\n[Penny:](" +
+            "https://pokepast.es/9c1dec4b8fa4aff3" +
+            ")\n\n[The Champion:](" +
+            "https://pokepast.es/ffa3d2e7a5079902" +
+            ")"
         );
       msg.channel.send(exampleEmbed);
     }
-
-
 
     if (msg.content === ";breeding") {
       const exampleEmbed = new Discord.MessageEmbed()
@@ -576,8 +613,14 @@ try {
           { name: "Bonsly:", value: "Breed Sudowoodo with Rock Incense." },
           { name: "Mantyke:", value: "Breed Mantine with Wave Incense." },
           { name: "Azuril:", value: "Breed Azumarill with Sea Incense." },
-          { name: "Budew:", value: "Breed Roserade/Roselia with Rose Incense." },
-          { name: "Happiny:", value: "Breed Chansey/Blissey with Luck Incense." }
+          {
+            name: "Budew:",
+            value: "Breed Roserade/Roselia with Rose Incense.",
+          },
+          {
+            name: "Happiny:",
+            value: "Breed Chansey/Blissey with Luck Incense.",
+          }
         );
       msg.channel.send(exampleEmbed);
     }
@@ -671,7 +714,8 @@ try {
           },
           {
             name: prefix + "statmods",
-            value: "Syntax: `;statmods`\nDisplays the bottle cap lady's schedue",
+            value:
+              "Syntax: `;statmods`\nDisplays the bottle cap lady's schedue",
           },
 
           {
@@ -681,7 +725,8 @@ try {
           },
           {
             name: prefix + "pickup",
-            value: "Syntax: `;pickup` OR `;pick`\nDisplays the pickup drop table",
+            value:
+              "Syntax: `;pickup` OR `;pick`\nDisplays the pickup drop table",
           },
           {
             name: prefix + "kbt",
@@ -715,7 +760,7 @@ try {
 
           {
             name: prefix + "gen 8",
-            value: "Syntax: `;gen8`\nsussy baka"
+            value: "Syntax: `;gen8`\nsussy baka",
           },
           {
             name: prefix + "scale",
@@ -730,8 +775,4 @@ try {
   client.login(process.env.mytoken);
   // client.login(process.env.mytoken2);
   // client.login(delThisLater);
-
-}
-catch (err) {
-
-}
+} catch (err) {}
