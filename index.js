@@ -759,8 +759,12 @@ try {
           },
 
           {
-            name: prefix + "gen 8",
-            value: "Syntax: `;gen8`\nsussy baka",
+            name: prefix + "tutor",
+            value: "Syntax: `;tutor <pokemon_name> `\nshows tutor compatibility, thanks dave99 for the lists!!",
+          },
+          {
+            name: prefix + "learntm",
+            value: "Syntax: `;learntm <pokemon_name>`\nshows tm compatibility, thanks dave99 again!!!!",
           },
           {
             name: prefix + "scale",
