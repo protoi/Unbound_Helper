@@ -61,7 +61,7 @@ let scalenames = [];
 scalenames = fetchData(endpointScale);
 
 const endpointHeldItems =
-  "https://gist.githubusercontent.com/protoi/3ffd76cf17285c3ed85f29052cc29adc/raw/b8e2f48f7deef8f11a8c247d7ee692c4430ceb2e/HeldItems.json";
+  "https://gist.githubusercontent.com/protoi/6f1ec09ab59d31b9483e1e1520ea3f97/raw/3c64484973cb64e47dae00b2f9839f0b2e9e2c3a/HeldItemsv2.json";
 let heldItemsName = [];
 heldItemsName = fetchData(endpointHeldItems);
 
