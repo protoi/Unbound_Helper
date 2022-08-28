@@ -41,17 +41,17 @@ let tmnames = [];
 tmnames = fetchData(endpointTM);
 
 const endpointpokelocation =
-  "https://gist.githubusercontent.com/protoi/c8fd17223e96753efceb96ec7e50605b/raw/2864bbaa1d102f776e9f5067e70eec7fa6e002e1/pokelocationsv2.json";
+  "https://gist.githubusercontent.com/protoi/c8fd17223e96753efceb96ec7e50605b/raw/5ea1d4ec2595e3e4a380b120751d4d21b96d9268/pokelocationsv2.json";
 let pokelocation = [];
 pokelocation = fetchData(endpointpokelocation);
 
 const endpointmega =
-  "https://gist.githubusercontent.com/protoi/14b6736a9f4ca6d82aa5c470d3de3d29/raw/5bfb59ab6442846afabcc431f06585de48baefcf/megastonesv2.json";
+  "https://gist.githubusercontent.com/protoi/14b6736a9f4ca6d82aa5c470d3de3d29/raw/9b0424de704dfdc25da1f2ad775fa57a27538988/megastonesv2.json";
 let megalocation = [];
 megalocation = fetchData(endpointmega);
 
 const endpointz =
-  "https://gist.githubusercontent.com/protoi/b0fe471d62f68ae9a7528294556f9bdb/raw/89fd4b91c59f7b051910d9a41fc15d88ba3a4d6f/zmoves.json";
+  "https://gist.githubusercontent.com/protoi/6d120768dceaa18e695ef186a3bdb864/raw/50d7b2f160f286675923eb3665b45a38471cf8b7/zmovesv2.json";
 let zlocation = [];
 zlocation = fetchData(endpointz);
 
@@ -66,12 +66,12 @@ let heldItemsName = [];
 heldItemsName = fetchData(endpointHeldItems);
 
 const endpointAbilities =
-  "https://gist.githubusercontent.com/protoi/ac007213bb6c0ff9ac2bbcbeb28469a9/raw/5157fedac63bcb802b267be20669344aa71ba1b9/abilitiesv2.json";
+  "https://gist.githubusercontent.com/protoi/ac007213bb6c0ff9ac2bbcbeb28469a9/raw/f67307a1abafefa8d1b9ffa0e64f6e91766deb49/abilitiesv2.json";
 let abilities = [];
 abilities = fetchData(endpointAbilities);
 
 const endpointAbilityDescription =
-  "https://gist.githubusercontent.com/protoi/60e7f90624d45e6ff3ad0948c955daeb/raw/103fb2694b6e8299c6e5d4d9f92fcf291cb21dc6/abilityDescription.json";
+  "https://gist.githubusercontent.com/protoi/8d50b2098665cbd18ba1cda2e13e6484/raw/cab829878c8b5a3dd5fdfded3627696b263b0e1e/abilityDescriptionv2.json";
 let abilityDescription = [];
 abilityDescription = fetchData(endpointAbilityDescription);
 
